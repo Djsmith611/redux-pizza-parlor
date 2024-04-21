@@ -1,5 +1,4 @@
-import React from 'react';
-import axios from 'axios';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from '../Header/Header.jsx'
 import './App.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -22,11 +21,19 @@ const theme = createTheme({
     <div className='App'>
       <header className='App-header'>
         <Header theme={theme} ThemeProvider={ThemeProvider}/>
-      </header>
-  
-      <img src='images/pizza_photo.png' />
+      <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
-  
+      <Router>
+        <Routes>
+          {/* PRESS CMD + "/" TO UNCOMMENT A SECTION, PLEASE CHANGE PATH AND ELEMENT AS NEEDED */}
+          
+          {/* <Route exact path='/' element={<Landing />} /> */}
+          {/* <Route exact path='/select' element={<SelectPizza />} /> */}
+          {/* <Route path='/info' element={<CustomerInfo />} /> */}
+          {/* <Route path='/checkout' element={<Checkout />} /> */}
+          {/* <Route path='/admin' element={<AdminView />} /> */}
+        </Routes>
+      </Router>
     </div>
   );
 }
