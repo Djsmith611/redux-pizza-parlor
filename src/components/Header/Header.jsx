@@ -1,10 +1,12 @@
+import AppBar from '@mui/material/AppBar';
+
 function Header({theme, ThemeProvider}) {
 
     return (
         <ThemeProvider theme={theme}>
-            <div backgroundColor='primary.main'>
+            <AppBar position="static" sx={{ bgcolor: 'primary.main' }}>
                 <h1>Prime Pizza</h1>
-            </div>
+            </AppBar>
         </ThemeProvider>
     )
 };
