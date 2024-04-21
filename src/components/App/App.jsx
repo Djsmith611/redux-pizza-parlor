@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Header from '../Header/Header.jsx'
 import './App.css';
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
+        <Header />
       </header>
   
       <img src='images/pizza_photo.png' />
