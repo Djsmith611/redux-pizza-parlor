@@ -1,13 +1,26 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
+import Header from '../Header/Header.jsx'
+import './App.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Prime Pizza</h1>
-      </header>
 
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#639C68',
+    },
+    secondary: {
+      main: '#f44336',
+    },
+  },
+});
+
+  return (
+    <div className='App'>
+      <header className='App-header'>
+        <Header theme={theme} ThemeProvider={ThemeProvider}/>
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
       <Router>
