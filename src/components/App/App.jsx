@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from '../Header/Header.jsx'
+import Header from '../Header/Header.jsx';
+import Checkout from '../Checkout/Checkout.jsx';
 import './App.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
