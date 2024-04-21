@@ -1,9 +1,11 @@
-function Header() {
+function Header({theme, ThemeProvider}) {
 
     return (
-        <>
-        <h1 className='App-title'>Prime Pizza</h1>
-        </>
+        <ThemeProvider theme={theme}>
+            <div backgroundColor='primary.main'>
+                <h1>Prime Pizza</h1>
+            </div>
+        </ThemeProvider>
     )
 };
 
