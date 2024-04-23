@@ -19,30 +19,14 @@ const customerOrder = (
   action
 ) => {
   switch (action.type) {
-    case "SET_NAME":
+    case "ADD_CUSTOMER_INFO":
       return {
         ...state,
-        understanding: action.payload,
-      };
-    case "SET_ADDRESS":
-      return {
-        ...state,
-        support: action.payload,
-      };
-    case "SET_CITY":
-      return {
-        ...state,
-        city: action.payload,
-      };
-    case "SET_ZIP":
-      return {
-        ...state,
-        zip: action.payload,
-      };
-    case "SET_ORDER_TYPE":
-      return {
-        ...state,
-        order_type: action.payload,
+        customer_name: action.payload.name,
+        street_address: action.payload.streetAddress,
+        city: action.payload.city,
+        zip: action.payload.zip,
+        order_type: action.payload.deliveryType
       };
     case "ADD_TOTAL":
       return {
