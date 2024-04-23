@@ -33,7 +33,7 @@ const theme = createTheme({
           {/* <Route exact path='/' element={<Landing />} /> */}
           {/* <Route exact path='/select' element={<SelectPizza />} /> */}
           {/* <Route path='/info' element={<CustomerInfo />} /> */}
-          {/* <Route path='/checkout' element={<Checkout />} /> */}
+          <Route path='/checkout' element={<Checkout />} />
           <Route path='/admin' element={<Admin />} />
         </Routes>
       </Router>

@@ -4,7 +4,7 @@ import logger from "redux-logger";
 /**
  * redux reducer to contain all user input
  * @param {object} state  object
- * @param {object} action contains type and may contaon payload
+ * @param {object} action contains type and may contain payload
  * @returns new state object
  */
 const customerOrder = (
