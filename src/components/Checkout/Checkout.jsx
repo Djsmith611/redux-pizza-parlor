@@ -10,28 +10,6 @@ function Checkout() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    // Variable for data to send in POST
-    let dataToSend = {
-        customer_name,
-        street_address,
-        city,
-        zip,
-        type,
-        total,
-        pizzas
-    };
-
-    // Function to send data to database on Checkout
-    const handleClick = () => {
-        axios.post('/api/order', dataToSend).then((response) => {
-            dispatch({ type: 'RESET_INPUT' });
-            history.push('/')
-        }).catch((error) => {
-            console.error(error);
-            alert('Something went wrong sending your order to the restaurant!');
-        })
-    }
-
 // FOR REFERENCE
     // router.post('/', async (req, res) => {
     //     const client = await pool.connect();
@@ -69,6 +47,27 @@ function Checkout() {
     //     }
     // });
 
+    // Variable for data to send in POST
+    let customerDataToSend = {
+        customer_name: customerInfo.customer_name,
+        street_address: customerInfo.street_address,
+        city: customerInfo.city,
+        zip: customerInfo.zip,
+        type: customerInfo.type,
+        total: customerInfo.total,
+        pizzas: customerInfo.pizzas
+    };
+
+    // Function to send data to database on Checkout
+    const handleClick = () => {
+        axios.post('/api/order', customerDataToSend).then((response) => {
+            dispatch({ type: 'RESET_INPUT' });
+            history.push('/')
+        }).catch((error) => {
+            console.error(error);
+            alert('Something went wrong sending your order to the restaurant!');
+        })
+    }
 
     return (
         <main>
