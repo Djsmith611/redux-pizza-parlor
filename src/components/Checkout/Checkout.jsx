@@ -1,14 +1,14 @@
 // will need axios to commit info to database
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Checkout() {
     // pull from stores for information
     const customerInfo = useSelector(store => store.customerOrder); 
     const pizzaArray = useSelector(store => store.cart);
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
 
 // FOR REFERENCE
     // router.post('/', async (req, res) => {
@@ -62,7 +62,7 @@ function Checkout() {
     const handleClick = () => {
         axios.post('/api/order', customerDataToSend).then((response) => {
             dispatch({ type: 'RESET_INPUT' });
-            history.push('/')
+            navigate('/')
         }).catch((error) => {
             console.error(error);
             alert('Something went wrong sending your order to the restaurant!');
