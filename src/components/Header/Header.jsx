@@ -1,7 +1,7 @@
 import { AppBar, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 
-function Header() {
+export default function Header() {
   const navigate = useNavigate();
 
 
@@ -16,6 +16,4 @@ function Header() {
       </Typography>
     </AppBar>
   );
-}
-
-export default Header;
+};

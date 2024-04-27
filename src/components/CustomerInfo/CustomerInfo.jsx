@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
   TextField,
   Radio,
@@ -12,8 +9,11 @@ import {
   Grid,
   Box,
 } from "@mui/material";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-function CustomerInfo() {
+export default function CustomerInfo() {
   const [name, setName] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
@@ -154,6 +154,4 @@ function CustomerInfo() {
       </form>
     </Box>
   );
-}
-
-export default CustomerInfo;
+};

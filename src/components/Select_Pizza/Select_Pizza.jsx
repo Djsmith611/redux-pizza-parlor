@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import Pizza_Map from '../Pizza_Map/Pizza_Map.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Pizza_Map } from '../../index';
+import axios from 'axios';
 
-const Select_Pizza = () => {
+export default function Select_Pizza() {
     const navigate = useNavigate();
     const [pizzaList, setPizzaList] = useState([]); // setters and getters for displaying pizzas
     
@@ -44,7 +44,5 @@ const Select_Pizza = () => {
             </table>
             <button onClick={() => {handleClick()}}> Next </button>
         </div>
-    )
-}
-
-export default Select_Pizza;
+    );
+};

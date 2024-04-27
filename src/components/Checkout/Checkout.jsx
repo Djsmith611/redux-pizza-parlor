@@ -1,7 +1,3 @@
-// will need axios to commit info to database
-import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import {
     Button,
     Stack,
@@ -16,10 +12,14 @@ import {
     Chip, 
     Container, 
     Card
-  } from "@mui/material";
-  import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+} from "@mui/material";
+import axios from 'axios';
+// will need axios to commit info to database
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
-function Checkout() {
+export default function Checkout() {
     // pull from stores for information
     const customerInfo = useSelector(store => store.customerOrder); 
     const cart = useSelector(store => store.cart);
@@ -91,7 +91,5 @@ function Checkout() {
             <Typography variant="h4"  sx={{padding: 1}}>Total: {customerInfo.total}</Typography>
             <Button endIcon={<ShoppingCartCheckoutIcon />} variant="contained" color='secondary' onClick={() => {handleClick()}}>Checkout</Button>
         </Box>
-    )
-}; 
-
-export default Checkout;
+    );
+};
