@@ -20,9 +20,10 @@ export default function App() {
         main: "#639C68",
       },
       secondary: {
-        main: "#f44336",
+        main: "#9C6397",
       },
     },
+    spacing: 12,
   });
 
   return (

@@ -1,7 +1,23 @@
-// will need axios to commit info to database
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import {
+    Button,
+    Stack,
+    Box,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Typography,
+    Chip, 
+    Container, 
+    Card
+} from "@mui/material";
 import axios from 'axios';
+// will need axios to commit info to database
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 export default function Checkout() {
     // pull from stores for information
@@ -9,43 +25,6 @@ export default function Checkout() {
     const cart = useSelector(store => store.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-// FOR REFERENCE
-    // router.post('/', async (req, res) => {
-    //     const client = await pool.connect();
-    
-    //     try {
-    //         const {
-    //             customer_name,
-    //             street_address,
-    //             city,
-    //             zip,
-    //             type,
-    //             total,
-    //             pizzas
-    //         } = req.body;
-    //         await client.query('BEGIN')
-    //         const orderInsertResults = await client.query(`INSERT INTO "orders" ("customer_name", "street_address", "city", "zip", "type", "total")
-    //         VALUES ($1, $2, $3, $4, $5, $6)
-    //         RETURNING id;`, [customer_name, street_address, city, zip, type, total]);
-    //         const orderId = orderInsertResults.rows[0].id;
-    
-    //         await Promise.all(pizzas.map(pizza => {
-    //             const insertLineItemText = `INSERT INTO "line_item" ("order_id", "pizza_id", "quantity") VALUES ($1, $2, $3)`;
-    //             const insertLineItemValues = [orderId, pizza.id, pizza.quantity];
-    //             return client.query(insertLineItemText, insertLineItemValues);
-    //         }));
-    
-    //         await client.query('COMMIT')
-    //         res.sendStatus(201);
-    //     } catch (error) {
-    //         await client.query('ROLLBACK')
-    //         console.log('Error POST /api/order', error);
-    //         res.sendStatus(500);
-    //     } finally {
-    //         client.release()
-    //     }
-    // });
 
     // Variable for data to send in POST
     let customerDataToSend = {
@@ -70,39 +49,47 @@ export default function Checkout() {
     }
 
     return (
-        <main>
-            <h3>Step 3: Checkout</h3>
-            <div className='order-summary'>
-                    <div className='customer-info'>
-                        <p>{customerInfo.customer_name}</p>
-                        <p>{customerInfo.street_address}</p>
-                        <p>{customerInfo.city} {customerInfo.zip}</p>
+        <Box sx={{ p: 2 }}>
+            <Card >
+                <Stack direction="column" justifyContent="space-between" alignItems="center" bgcolor='secondary.light'>
+                    <br />
+                    <Typography variant="h5">Step 3: Checkout</Typography>
+                    <div className='order-summary'>
+                            <div className='customer-info'>
+                                <p>{customerInfo.customer_name}</p>
+                                <p>{customerInfo.street_address}</p>
+                                <p>{customerInfo.city} {customerInfo.zip}</p>
+                            </div>
+                            <Container>
+                                <Chip label={`${customerInfo.type}`} color='secondary' />
+                            </Container>
+                            <br />
                     </div>
-                    <div className='order-type'>
-                        <h4>{customerInfo.type}</h4>
-                    </div>
-            </div>
-            <div className='order-table'>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Name </td>
-                            <td>Cost</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cart.map((pizza) => (
-                            <tr key={pizza.id}>
-                                <td>{pizza.name}</td>
-                                <td>{pizza.price}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table> 
-            </div>
-            <h2>Total: {customerInfo.total}</h2>
-            <button onClick={() => {handleClick()}}>
-            Checkout</button>
-        </main>
-    )
+                </Stack>
+            </Card>
+            <br />
+            <Card>
+                <TableContainer>
+                    <Table sx={{ minWidth: 350 }} size="small">
+                        <TableHead sx={{ bgcolor: 'secondary.light' }}>
+                            <TableRow>
+                                <TableCell ><Typography variant="h6">Name</Typography></TableCell>
+                                <TableCell align="right"><Typography variant="h6">Cost</Typography></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {cart.map((pizza) => (
+                                <TableRow key={pizza.id}>
+                                    <TableCell>{pizza.name}</TableCell>
+                                    <TableCell align="right">{pizza.price}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer> 
+            </Card>
+            <Typography variant="h4"  sx={{padding: 1}}>Total: {customerInfo.total}</Typography>
+            <Button endIcon={<ShoppingCartCheckoutIcon />} variant="contained" color='secondary' onClick={() => {handleClick()}}>Checkout</Button>
+        </Box>
+    );
 };
