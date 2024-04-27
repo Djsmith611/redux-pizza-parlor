@@ -6,6 +6,11 @@ import { useNavigate } from 'react-router-dom';
 const Select_Pizza = () => {
     const navigate = useNavigate();
     const [pizzaList, setPizzaList] = useState([]); // setters and getters for displaying pizzas
+    const [pizzaToSend, setPizzaToSend] = useState([]); 
+
+    const AddPizza = () => {
+        setPizzaToSend([...pizzaToSend, pizza])
+    }
     
 
     function getPizza() {

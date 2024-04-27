@@ -29,10 +29,6 @@ function App() {
   return (
 
     <div className='App'>
-      <header className='App-header'>
-        <Header theme={theme} ThemeProvider={ThemeProvider}/>
-      </header>
-      <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
       <Router>
         <Header />
