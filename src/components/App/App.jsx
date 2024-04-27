@@ -3,8 +3,10 @@ import Header from '../Header/Header.jsx';
 import CustomerInfo from "../CustomerInfo/CustomerInfo.jsx";
 import Checkout from '../Checkout/Checkout.jsx';
 import './App.css';
+import Select_Pizza from '../Select_Pizza/Select_Pizza.jsx'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Admin from "../Admin/Admin.jsx";
+
 
 function App() {
 
@@ -27,6 +29,7 @@ const theme = createTheme({
       </header>
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
+      <Select_Pizza/>
       <Router>
         <Routes>
           {/* PRESS CMD + "/" TO UNCOMMENT A SECTION, PLEASE CHANGE PATH AND ELEMENT AS NEEDED */}
