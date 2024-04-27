@@ -86,7 +86,7 @@ function Checkout() {
                 <table>
                     <thead>
                         <tr>
-                            <td>Name</td>
+                            <td>Name </td>
                             <td>Cost</td>
                         </tr>
                     </thead>
