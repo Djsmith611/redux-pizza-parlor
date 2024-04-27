@@ -23,6 +23,7 @@ function App() {
         main: "#9C6397",
       },
     },
+    spacing: 12,
   });
 
   return (

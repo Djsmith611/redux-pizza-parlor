@@ -50,7 +50,7 @@ function Checkout() {
 
     return (
         <Box sx={{ p: 2 }}>
-            <Card>
+            <Card >
                 <Stack direction="column" justifyContent="space-between" alignItems="center" bgcolor='secondary.light'>
                     <br />
                     <Typography variant="h5">Step 3: Checkout</Typography>
@@ -88,7 +88,7 @@ function Checkout() {
                     </Table>
                 </TableContainer> 
             </Card>
-            <Typography variant="h4">Total: {customerInfo.total}</Typography>
+            <Typography variant="h4"  sx={{padding: 1}}>Total: {customerInfo.total}</Typography>
             <Button endIcon={<ShoppingCartCheckoutIcon />} variant="contained" color='secondary' onClick={() => {handleClick()}}>Checkout</Button>
         </Box>
     )
