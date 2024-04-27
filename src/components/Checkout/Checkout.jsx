@@ -93,8 +93,8 @@ function Checkout() {
                     <tbody>
                         {pizzaArray.map((pizza) => (
                             <tr key={pizza.id}>
-                                <td>{pizza.type}</td>
-                                <td>{pizza.cost}</td>
+                                <td>{pizza.name}</td>
+                                <td>{pizza.price}</td>
                             </tr>
                         ))}
                     </tbody>
