@@ -34,13 +34,11 @@ function App() {
       </header>
       <img src="images/pizza_photo.png" />
       <p>Pizza is great.</p>
-      <Select_Pizza/>
       <Router>
         <Header />
         <PizzaImage />
         <Routes>
-          {/* PRESS CMD + "/" TO UNCOMMENT A SECTION, PLEASE CHANGE PATH AND ELEMENT AS NEEDED */}
-
+          <Route exact path='/' element={<Select_Pizza/>} />
           {/* <Route exact path='/' element={<Landing />} /> */}
           {/* <Route exact path='/select' element={<SelectPizza />} /> */}
           <Route path="/checkout" element={<Checkout />} />

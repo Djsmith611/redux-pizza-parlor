@@ -53,9 +53,9 @@ function Checkout() {
         street_address: customerInfo.street_address,
         city: customerInfo.city,
         zip: customerInfo.zip,
-        type: customerInfo.type,
+        type: customerInfo.deliveryType,
         total: customerInfo.total,
-        pizzas: customerInfo.pizzas
+        pizzas: [pizzaArray]
     };
 
     // Function to send data to database on Checkout
@@ -93,8 +93,8 @@ function Checkout() {
                     <tbody>
                         {pizzaArray.map((pizza) => (
                             <tr key={pizza.id}>
-                                <td>{pizza.type}</td>
-                                <td>{pizza.cost}</td>
+                                <td>{pizza.name}</td>
+                                <td>{pizza.price}</td>
                             </tr>
                         ))}
                     </tbody>

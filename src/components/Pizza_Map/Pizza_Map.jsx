@@ -5,7 +5,8 @@ const Pizza_Map = ({pizza}) => {
     const dispatch = useDispatch();
 
     const sendToCart = () => {
-        let action = {type: 'SEND_TO_CART', payload: pizza}
+        let action = {type: 'ADD_TO_CART', payload: pizza};
+        dispatch(action);
     }
     
 
