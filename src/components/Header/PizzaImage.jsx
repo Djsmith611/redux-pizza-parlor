@@ -7,10 +7,13 @@ export default function PizzaImage() {
   return (
     <>
       {isHomePage && (
-        <>
+        <div
+        style={{
+          marginTop:"10px"
+        }}>
           <img src="images/pizza_photo.png" alt="Pizza" />
           <p>Pizza is great.</p>
-        </>
+        </div>
       )}
     </>
   );
