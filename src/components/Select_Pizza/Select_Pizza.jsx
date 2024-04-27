@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Pizza_Map from '../Pizza_Map/Pizza_Map.jsx';
 
 
 const Select_Pizza = () => {
 
-    const [pizzaList, setPizzaList] = useState([]);
+    const [pizzaList, setPizzaList] = useState([]); // setters and getters for displaying pizzas
     
 
     function getPizza() {
@@ -25,16 +26,19 @@ const Select_Pizza = () => {
 
 
     return (
-        <>
+        <table>
+            <tbody>
+                <tr>
         {
             pizzaList.map((pizza) => {
-                return <div key={pizza.id}>
-                    <img src={`${pizza.image_path}`}></img>
-                </div>
+                return <td key={pizza.name}>
+                   <Pizza_Map pizza={pizza}/>
+                </td>
             })
         }
-        
-        </>
+                </tr>
+            </tbody>
+        </table>
     )
 }
 
