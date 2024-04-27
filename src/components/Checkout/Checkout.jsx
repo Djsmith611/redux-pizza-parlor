@@ -55,7 +55,7 @@ function Checkout() {
         zip: customerInfo.zip,
         type: customerInfo.type,
         total: customerInfo.total,
-        pizzas: [cart]
+        pizzas: cart
     };
 
     // Function to send data to database on Checkout
