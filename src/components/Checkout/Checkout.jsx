@@ -72,18 +72,16 @@ function Checkout() {
     return (
         <main>
             <h3>Step 3: Checkout</h3>
-        {customerInfo.map((info) => (
             <div className='order-summary'>
                     <div className='customer-info'>
-                        <p>{info.customer_name}</p>
-                        <p>{info.street_address}</p>
-                        <p>{info.city}, {info.zip}</p>
+                        <p>{customerInfo.customer_name}</p>
+                        <p>{customerInfo.street_address}</p>
+                        <p>{customerInfo.city}, {customerInfo.zip}</p>
                     </div>
                     <div className='order-type'>
-                        <h4>{info.type}</h4>
+                        <h4>{customerInfo.type}</h4>
                     </div>
             </div>
-        ))}
             <div className='order-table'>
                 <table>
                     <thead>
@@ -102,9 +100,7 @@ function Checkout() {
                     </tbody>
                 </table> 
             </div>
-        {customerInfo.map((info) => (
-            <h2>Total: {info.total}</h2>
-        ))}
+            <h2>Total: {customerInfo.total}</h2>
             <button onClick={() => {handleClick()}}>
             Checkout</button>
         </main>
