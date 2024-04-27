@@ -1,6 +1,6 @@
 import { AppBar, Typography } from "@mui/material";
 
-function Header() {
+export default function Header() {
   return (
     <AppBar position="static" sx={{ bgcolor: "primary.main" }}>
       <Typography variant="h4" component="h1">
@@ -8,6 +8,4 @@ function Header() {
       </Typography>
     </AppBar>
   );
-}
-
-export default Header;
+};

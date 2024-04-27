@@ -1,9 +1,9 @@
 // will need axios to commit info to database
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-function Checkout() {
+export default function Checkout() {
     // pull from stores for information
     const customerInfo = useSelector(store => store.customerOrder); 
     const cart = useSelector(store => store.cart);
@@ -105,6 +105,4 @@ function Checkout() {
             Checkout</button>
         </main>
     )
-}; 
-
-export default Checkout;
+};
