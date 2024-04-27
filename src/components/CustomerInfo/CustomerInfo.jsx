@@ -10,7 +10,9 @@ import {
   FormControl,
   FormLabel,
   Grid,
+  Box,
 } from "@mui/material"; // Import Material-UI components
+import { autoBatchEnhancer } from "@reduxjs/toolkit";
 
 function CustomerInfo() {
   /* CUSTOMER INFO VARIABLES */
@@ -68,76 +70,85 @@ function CustomerInfo() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <TextField
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            label="Name"
-            required
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            type="text"
-            name="streetAddress"
-            value={streetAddress}
-            onChange={handleChange}
-            label="Street Address"
-            required
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            type="text"
-            name="city"
-            value={city}
-            onChange={handleChange}
-            label="City"
-            required
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            type="number"
-            name="zip"
-            value={zip}
-            onChange={handleChange}
-            label="ZIP Code"
-            required
-            fullWidth
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <FormControl component="fieldset" margin="normal">
-            <FormLabel component="legend">Delivery Type</FormLabel>
-            <RadioGroup
-              name="deliveryType"
-              value={deliveryType}
+    <Box
+    sx={{
+      width:"90%",
+      margin:"auto",
+      borderRadius:"10px",
+      boxShadow:"5px 5px 15px black",
+      padding:"10px"
+    }}>
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
+            <TextField
+              type="text"
+              name="name"
+              value={name}
               onChange={handleChange}
-            >
-              <FormControlLabel
-                value="pickup"
-                control={<Radio />}
-                label="Pickup"
-              />
-              <FormControlLabel
-                value="delivery"
-                control={<Radio />}
-                label="Delivery"
-              />
-            </RadioGroup>
-          </FormControl>
+              label="Name"
+              required
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              type="text"
+              name="streetAddress"
+              value={streetAddress}
+              onChange={handleChange}
+              label="Street Address"
+              required
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              type="text"
+              name="city"
+              value={city}
+              onChange={handleChange}
+              label="City"
+              required
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              type="number"
+              name="zip"
+              value={zip}
+              onChange={handleChange}
+              label="ZIP Code"
+              required
+              fullWidth
+              margin="normal"
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl component="fieldset" margin="normal">
+              <FormLabel component="legend">Delivery Type</FormLabel>
+              <RadioGroup
+                name="deliveryType"
+                value={deliveryType}
+                onChange={handleChange}
+              >
+                <FormControlLabel
+                  value="pickup" 
+                  control={<Radio />}
+                  label="Pickup"
+                />
+                <FormControlLabel
+                  value="delivery"
+                  control={<Radio />}
+                  label="Delivery"
+                />
+              </RadioGroup>
+            </FormControl>
+          </Grid>
         </Grid>
-      </Grid>
-      <Button type="submit" variant="contained" color="primary" fullWidth>
-        Next
-      </Button>
-    </form>
+        <Button type="submit" variant="contained" color="primary" fullWidth >
+          Next
+        </Button>
+      </form>
+    </Box>
   );
 }
 
