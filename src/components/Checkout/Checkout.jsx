@@ -2,6 +2,11 @@
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import {
+    Button,
+    Grid,
+    Box,
+  } from "@mui/material"; // Import Material-UI components
 
 function Checkout() {
     // pull from stores for information
@@ -101,8 +106,7 @@ function Checkout() {
                 </table> 
             </div>
             <h2>Total: {customerInfo.total}</h2>
-            <button onClick={() => {handleClick()}}>
-            Checkout</button>
+            <Button variant="contained" color="secondary" onClick={() => {handleClick()}}>Checkout</Button>
         </main>
     )
 }; 
