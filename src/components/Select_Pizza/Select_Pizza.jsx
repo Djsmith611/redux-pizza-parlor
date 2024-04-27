@@ -6,15 +6,8 @@ import { useNavigate } from 'react-router-dom';
 const Select_Pizza = () => {
     const navigate = useNavigate();
     const [pizzaList, setPizzaList] = useState([]); // setters and getters for displaying pizzas
-    const [pizzaToSend, setPizzaToSend] = useState([]); 
-
-    const AddPizza = () => {
-        setPizzaToSend([...pizzaToSend, pizza])
-    }
     
-
-    function getPizza() {
-
+    const getPizza = () => {
     axios.get('/api/pizza').then((r) => { //promise after GET request
         console.log(r.data);
         setPizzaList(r.data)
