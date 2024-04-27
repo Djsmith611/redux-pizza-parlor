@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom"; // Replacement for useHistory
+import { useNavigate } from "react-router-dom";
 import {
   TextField,
   Radio,
@@ -11,25 +11,18 @@ import {
   FormLabel,
   Grid,
   Box,
-} from "@mui/material"; // Import Material-UI components
-import { autoBatchEnhancer } from "@reduxjs/toolkit";
+} from "@mui/material";
 
 function CustomerInfo() {
-  /* CUSTOMER INFO VARIABLES */
   const [name, setName] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
   const [deliveryType, setDeliveryType] = useState("pickup");
 
-  /* HOOKS */
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  /**
-   * HANDLES SUBMIT EVENT
-   * @param {*} e EVENT
-   */
   const handleSubmit = (e) => {
     e.preventDefault();
     const action = {
@@ -71,14 +64,19 @@ function CustomerInfo() {
 
   return (
     <Box
-    sx={{
-      width:"90%",
-      margin:"auto",
-      borderRadius:"10px",
-      boxShadow:"5px 5px 15px black",
-      padding:"10px"
-    }}>
-      <form onSubmit={handleSubmit}>
+      sx={{
+        width: "90%",
+        margin: "5%",
+        borderRadius: "10px",
+        boxShadow: "5px 5px 15px black",
+        padding: "20px",
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <TextField
@@ -131,7 +129,7 @@ function CustomerInfo() {
                 onChange={handleChange}
               >
                 <FormControlLabel
-                  value="pickup" 
+                  value="pickup"
                   control={<Radio />}
                   label="Pickup"
                 />
@@ -144,7 +142,13 @@ function CustomerInfo() {
             </FormControl>
           </Grid>
         </Grid>
-        <Button type="submit" variant="contained" color="primary" fullWidth >
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ marginTop: "20px" }}
+        >
           Next
         </Button>
       </form>
