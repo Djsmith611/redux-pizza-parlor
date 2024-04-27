@@ -1,48 +1,14 @@
 // will need axios to commit info to database
 import axios from 'axios';
-import { useSelector } from 'react-redux';
-import React, { useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Checkout() {
     // pull from stores for information
     const customerInfo = useSelector(store => store.customerOrder); 
-    const pizzaArray = useSelector(store => store.pizzaArray);
-    // constants to create data items for database
-    const [name, setName] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [zip, setZip] = useState('');
-    const [type, setType] = useState('');
-    const [total, setTotal] = useState('');
-    const [pies, setPies] = useState('');
-
-    // Variable for data to send in POST
-    const dataToSend = {
-        customer_name: name,
-        street_address: address,
-        city: city,
-        zip: zip,
-        type: type,
-        total: total,
-        pizzas: pies
-    };
-
-    // Function to send data to database on Checkout
-    const handleClick = () => {
-        axios.post('/api/order', dataToSend).then((response) => {
-            setName('');
-            setAddress('');
-            setCity('');
-            setZip('');
-            setType('');
-            setTotal('');
-            setPies('');
-        }).catch((error) => {
-            console.error(error);
-            alert('Something went wrong sending your order to the restaurant!');
-        })
-    }
+    const pizzaArray = useSelector(store => store.cart);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 // FOR REFERENCE
     // router.post('/', async (req, res) => {
@@ -81,6 +47,27 @@ function Checkout() {
     //     }
     // });
 
+    // Variable for data to send in POST
+    let customerDataToSend = {
+        customer_name: customerInfo.customer_name,
+        street_address: customerInfo.street_address,
+        city: customerInfo.city,
+        zip: customerInfo.zip,
+        type: customerInfo.type,
+        total: customerInfo.total,
+        pizzas: customerInfo.pizzas
+    };
+
+    // Function to send data to database on Checkout
+    const handleClick = () => {
+        axios.post('/api/order', customerDataToSend).then((response) => {
+            dispatch({ type: 'RESET_INPUT' });
+            navigate('/')
+        }).catch((error) => {
+            console.error(error);
+            alert('Something went wrong sending your order to the restaurant!');
+        })
+    }
 
     return (
         <main>
@@ -88,12 +75,12 @@ function Checkout() {
         {customerInfo.map((info) => (
             <div className='order-summary'>
                     <div className='customer-info'>
-                        <p value={name}>{info.customer_name}</p>
-                        <p value={address} >{info.street_address}</p>
-                        <p><span value={city}>{info.city}</span>, <span value={zip}>{info.zip}</span></p>
+                        <p>{info.customer_name}</p>
+                        <p>{info.street_address}</p>
+                        <p>{info.city}, {info.zip}</p>
                     </div>
                     <div className='order-type'>
-                        <h4 value={type}>{info.type}</h4>
+                        <h4>{info.type}</h4>
                     </div>
             </div>
         ))}
@@ -116,27 +103,9 @@ function Checkout() {
                 </table> 
             </div>
         {customerInfo.map((info) => (
-            <h2>Total: <span value={total}>{info.total}</span></h2>
+            <h2>Total: {info.total}</h2>
         ))}
-            <button onClick={() => {
-                // use setters for all values; 
-                // I need to figure out how to pull the values for this 
-                // when these aren't inputs and therefore there isn't an event
-                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                // TO DO: UPDATE ALL SETTER FUNCTIONS TO MAKE THIS WORK
-                // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                setName();
-                setAddress();
-                setCity();
-                setZip();
-                setType();
-                setTotal();
-                setPies();
-                // running all of the setter functions before handleClick
-                // because i want to make sure that the setters are recording data before
-                // i clear all of them in handleClick
-                handleClick();
-            }}>
+            <button onClick={() => {handleClick()}}>
             Checkout</button>
         </main>
     )

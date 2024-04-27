@@ -52,6 +52,17 @@ const customerOrder = (
   }
 };
 
+const cart = (state = [], action) => {
+  // setting cart for adding pizzas on first page (adding them to an array)
+  if (action.type === 'ADD_TO_CART') {
+    return [...state, action.payload]
+    // setting cart to clear on Checkout button click on checkout page (clears the array)
+  } else if (action.type === 'RESET_INPUT') {
+    return []
+  }
+  return state;
+}
+
 /**
  * The redux store for this application:
  * - configureStore automatically calls "combineReducers"
@@ -60,6 +71,7 @@ const customerOrder = (
 const reduxStore = configureStore({
   reducer: {
     customerOrder,
+    cart
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware().concat(logger); // applying logger middleware
