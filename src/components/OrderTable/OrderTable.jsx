@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import moment from 'moment';
+import OrderTableItem from '../OrderTableItem/OrderTableItem';
 
 function Ordertable() {
     const [pizzaOrders, setPizzaOrders] = useState([]);
@@ -23,15 +23,8 @@ function Ordertable() {
 
     return(
         <tbody>
-                {pizzaOrders.map(order => (
-                        <tr key={order.id}>
-                            <td>{order.customer_name}</td>
-                            <td>{moment(order.time).format('LLL')}</td>
-                            <td>{order.type}</td>
-                            <td>{order.total}</td>
-                        </tr>
-                    ))}
-            </tbody>
+            <OrderTableItem pizzaOrders={pizzaOrders}/>
+        </tbody>
     )
 };
 
