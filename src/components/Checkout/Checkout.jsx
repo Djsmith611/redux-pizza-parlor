@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function Checkout() {
     // pull from stores for information
     const customerInfo = useSelector(store => store.customerOrder); 
-    const pizzaArray = useSelector(store => store.cart);
+    const cart = useSelector(store => store.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -53,9 +53,9 @@ function Checkout() {
         street_address: customerInfo.street_address,
         city: customerInfo.city,
         zip: customerInfo.zip,
-        type: customerInfo.deliveryType,
+        type: customerInfo.type,
         total: customerInfo.total,
-        pizzas: [pizzaArray]
+        pizzas: [cart]
     };
 
     // Function to send data to database on Checkout
@@ -76,7 +76,7 @@ function Checkout() {
                     <div className='customer-info'>
                         <p>{customerInfo.customer_name}</p>
                         <p>{customerInfo.street_address}</p>
-                        <p>{customerInfo.city}, {customerInfo.zip}</p>
+                        <p>{customerInfo.city} {customerInfo.zip}</p>
                     </div>
                     <div className='order-type'>
                         <h4>{customerInfo.type}</h4>
@@ -91,7 +91,7 @@ function Checkout() {
                         </tr>
                     </thead>
                     <tbody>
-                        {pizzaArray.map((pizza) => (
+                        {cart.map((pizza) => (
                             <tr key={pizza.id}>
                                 <td>{pizza.name}</td>
                                 <td>{pizza.price}</td>

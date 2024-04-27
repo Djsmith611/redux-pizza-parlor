@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Pizza_Map from '../Pizza_Map/Pizza_Map.jsx';
-
+import { useNavigate } from 'react-router-dom';
 
 const Select_Pizza = () => {
-
+    const navigate = useNavigate();
     const [pizzaList, setPizzaList] = useState([]); // setters and getters for displaying pizzas
     
 
@@ -24,21 +24,28 @@ const Select_Pizza = () => {
         getPizza();
     }, []);
 
+    const handleClick = () => {
+        navigate('/info')
+    }
+
 
     return (
-        <table>
-            <tbody>
-                <tr>
-        {
-            pizzaList.map((pizza) => {
-                return <td key={pizza.name}>
-                   <Pizza_Map pizza={pizza}/>
-                </td>
-            })
-        }
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+            {
+                pizzaList.map((pizza) => {
+                    return <td key={pizza.name}>
+                    <Pizza_Map pizza={pizza}/>
+                    </td>
+                })
+            }
+                    </tr>
+                </tbody>
+            </table>
+            <button onClick={() => {handleClick()}}> Next </button>
+        </div>
     )
 }
 
