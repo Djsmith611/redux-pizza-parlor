@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
     Button,
-    Grid,
+    Card,
     Box,
     Table,
     TableBody,
@@ -12,7 +12,7 @@ import {
     TableContainer,
     TableHead,
     TableRow,
-    Paper
+    CardContent,
   } from "@mui/material"; // Import Material-UI components
 
 function Checkout() {
@@ -83,7 +83,8 @@ function Checkout() {
 
     return (
         <Box>
-            <Grid>
+            <Card sx={{ maxWidth: 275, bgcolor: 'primary.light' }}>
+                <CardContent>
                 <h3>Step 3: Checkout</h3>
                 <div className='order-summary'>
                         <div className='customer-info'>
@@ -95,7 +96,8 @@ function Checkout() {
                             <h4>{customerInfo.type}</h4>
                         </div>
                 </div>
-            </Grid>
+                </CardContent>
+            </Card>
             <div className='order-table'>
                 <TableContainer>
                     <Table sx={{ minWidth: 350 }}>
