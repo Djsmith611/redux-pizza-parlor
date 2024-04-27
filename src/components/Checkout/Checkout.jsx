@@ -14,7 +14,8 @@ import {
     TableRow,
     Typography,
     Chip, 
-    Container
+    Container, 
+    Card
   } from "@mui/material";
   import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
@@ -49,23 +50,25 @@ function Checkout() {
 
     return (
         <Box sx={{ p: 2 }}>
-            <Stack direction="column" justifyContent="space-between" alignItems="center" bgcolor='secondary.light'>
-                <br />
-                <Typography variant="h5">Step 3: Checkout</Typography>
-                <div className='order-summary'>
-                        <div className='customer-info'>
-                            <p>{customerInfo.customer_name}</p>
-                            <p>{customerInfo.street_address}</p>
-                            <p>{customerInfo.city} {customerInfo.zip}</p>
-                        </div>
-                        <Container>
-                            <Chip label={`${customerInfo.type}`} color='secondary' />
-                        </Container>
-                        <br />
-                </div>
-            </Stack>
+            <Card>
+                <Stack direction="column" justifyContent="space-between" alignItems="center" bgcolor='secondary.light'>
+                    <br />
+                    <Typography variant="h5">Step 3: Checkout</Typography>
+                    <div className='order-summary'>
+                            <div className='customer-info'>
+                                <p>{customerInfo.customer_name}</p>
+                                <p>{customerInfo.street_address}</p>
+                                <p>{customerInfo.city} {customerInfo.zip}</p>
+                            </div>
+                            <Container>
+                                <Chip label={`${customerInfo.type}`} color='secondary' />
+                            </Container>
+                            <br />
+                    </div>
+                </Stack>
+            </Card>
             <br />
-            <div className='order-table'>
+            <Card>
                 <TableContainer>
                     <Table sx={{ minWidth: 350 }} size="small">
                         <TableHead sx={{ bgcolor: 'secondary.light' }}>
@@ -84,7 +87,7 @@ function Checkout() {
                         </TableBody>
                     </Table>
                 </TableContainer> 
-            </div>
+            </Card>
             <Typography variant="h4">Total: {customerInfo.total}</Typography>
             <Button endIcon={<ShoppingCartCheckoutIcon />} variant="contained" color='secondary' onClick={() => {handleClick()}}>Checkout</Button>
         </Box>
