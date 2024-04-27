@@ -6,6 +6,13 @@ import {
     Button,
     Grid,
     Box,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper
   } from "@mui/material"; // Import Material-UI components
 
 function Checkout() {
@@ -75,39 +82,43 @@ function Checkout() {
     }
 
     return (
-        <main>
-            <h3>Step 3: Checkout</h3>
-            <div className='order-summary'>
-                    <div className='customer-info'>
-                        <p>{customerInfo.customer_name}</p>
-                        <p>{customerInfo.street_address}</p>
-                        <p>{customerInfo.city} {customerInfo.zip}</p>
-                    </div>
-                    <div className='order-type'>
-                        <h4>{customerInfo.type}</h4>
-                    </div>
-            </div>
+        <Box>
+            <Grid>
+                <h3>Step 3: Checkout</h3>
+                <div className='order-summary'>
+                        <div className='customer-info'>
+                            <p>{customerInfo.customer_name}</p>
+                            <p>{customerInfo.street_address}</p>
+                            <p>{customerInfo.city} {customerInfo.zip}</p>
+                        </div>
+                        <div className='order-type'>
+                            <h4>{customerInfo.type}</h4>
+                        </div>
+                </div>
+            </Grid>
             <div className='order-table'>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Name</td>
-                            <td>Cost</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cart.map((pizza) => (
-                            <tr key={pizza.id}>
-                                <td>{pizza.name}</td>
-                                <td>{pizza.price}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table> 
+                <TableContainer>
+                    <Table sx={{ minWidth: 350 }}>
+                        <TableHead sx={{ bgcolor: 'secondary.light' }}>
+                            <TableRow>
+                                <TableCell>Name</TableCell>
+                                <TableCell align="right">Cost</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {cart.map((pizza) => (
+                                <TableRow key={pizza.id}>
+                                    <TableCell>{pizza.name}</TableCell>
+                                    <TableCell align="right">{pizza.price}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer> 
             </div>
             <h2>Total: {customerInfo.total}</h2>
             <Button variant="contained" color="secondary" onClick={() => {handleClick()}}>Checkout</Button>
-        </main>
+        </Box>
     )
 }; 
 
