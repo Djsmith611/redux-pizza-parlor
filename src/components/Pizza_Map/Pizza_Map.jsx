@@ -10,7 +10,8 @@ const Pizza_Map = ({pizza}) => {
         }
         let action = {type: 'ADD_TO_CART', payload: payload};
         dispatch(action);
-        action = {type:"ADD_TOTAL", payload: pizza.price}
+        action = {type:"ADD_TOTAL", payload: parseFloat(pizza.price)}
+        dispatch(action);
     }
     
 
