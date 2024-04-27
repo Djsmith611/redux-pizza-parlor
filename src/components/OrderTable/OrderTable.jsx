@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import OrderTableItem from '../OrderTableItem/OrderTableItem';
+import { TableBody} from "@mui/material";
 
 function Ordertable() {
     const [pizzaOrders, setPizzaOrders] = useState([]);
@@ -22,9 +23,9 @@ function Ordertable() {
     }
 
     return(
-        <tbody>
+        <TableBody>
             <OrderTableItem pizzaOrders={pizzaOrders}/>
-        </tbody>
+        </TableBody>
     )
 };
 
