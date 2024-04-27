@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 
 export default function PizzaImage() {
   const location = useLocation();
@@ -7,13 +8,12 @@ export default function PizzaImage() {
   return (
     <>
       {isHomePage && (
-        <div
-        style={{
-          marginTop:"10px"
-        }}>
-          <img src="images/pizza_photo.png" alt="Pizza" />
-          <p>Pizza is great.</p>
-        </div>
+        <Box mt={2} textAlign="center">
+          <img src="images/pizza_photo.png" alt="Delicious Pizza" style={{ width: "100%" }} />
+          <Typography variant="body1" mt={1}>
+            Pizza is great.
+          </Typography>
+        </Box>
       )}
     </>
   );
