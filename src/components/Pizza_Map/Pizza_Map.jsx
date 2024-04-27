@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-const Pizza_Map = ({pizza, quantity}) => {
+const Pizza_Map = ({pizza}) => {
     const dispatch = useDispatch();
 
     const sendToCart = () => {
@@ -10,6 +10,7 @@ const Pizza_Map = ({pizza, quantity}) => {
         }
         let action = {type: 'ADD_TO_CART', payload: payload};
         dispatch(action);
+        action = {type:"ADD_TOTAL", payload: pizza.price}
     }
     
 
