@@ -53,7 +53,7 @@ function Checkout() {
         street_address: customerInfo.street_address,
         city: customerInfo.city,
         zip: customerInfo.zip,
-        type: customerInfo.type,
+        type: customerInfo.deliveryType,
         total: customerInfo.total,
         pizzas: [pizzaArray]
     };
