@@ -13,7 +13,7 @@ const customerOrder = (
     street_address: "",
     city: "",
     zip: "",
-    order_type: "",
+    type: "",
     total: 0
   },
   action
@@ -26,7 +26,7 @@ const customerOrder = (
         street_address: action.payload.streetAddress,
         city: action.payload.city,
         zip: action.payload.zip,
-        order_type: action.payload.deliveryType
+        type: action.payload.deliveryType
       };
     case "ADD_TOTAL":
       return {
