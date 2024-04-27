@@ -5,6 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Header from "../Header/Header.jsx";
+import PizzaImage from "../Header/PizzaImage.jsx";
 import CustomerInfo from "../CustomerInfo/CustomerInfo.jsx";
 import Checkout from "../Checkout/Checkout.jsx";
 import "./App.css";
@@ -26,9 +27,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <header className="App-header">
-          <Header theme={theme} ThemeProvider={ThemeProvider} />
-        </header>
+        <Header />
+        <PizzaImage />
         <Routes>
           {/* PRESS CMD + "/" TO UNCOMMENT A SECTION, PLEASE CHANGE PATH AND ELEMENT AS NEEDED */}
 
