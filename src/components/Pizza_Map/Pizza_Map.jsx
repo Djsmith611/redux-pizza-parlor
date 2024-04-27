@@ -1,12 +1,14 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const Pizza_Map = ({pizza, quantity}) => {
-    const [quantity, setQuantity] = useState(0);
     const dispatch = useDispatch();
 
     const sendToCart = () => {
-        let action = {type: 'ADD_TO_CART', payload: pizza};
+        let payload = {
+            ...pizza,
+            quantity: 1,
+        }
+        let action = {type: 'ADD_TO_CART', payload: payload};
         dispatch(action);
     }
     
