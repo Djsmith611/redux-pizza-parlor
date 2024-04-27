@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
     Button,
-    Card,
+    Stack,
     Box,
     Table,
     TableBody,
@@ -12,8 +12,11 @@ import {
     TableContainer,
     TableHead,
     TableRow,
-    CardContent,
-  } from "@mui/material"; // Import Material-UI components
+    Typography,
+    Chip, 
+    Container
+  } from "@mui/material";
+  import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 function Checkout() {
     // pull from stores for information
@@ -21,43 +24,6 @@ function Checkout() {
     const cart = useSelector(store => store.cart);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-// FOR REFERENCE
-    // router.post('/', async (req, res) => {
-    //     const client = await pool.connect();
-    
-    //     try {
-    //         const {
-    //             customer_name,
-    //             street_address,
-    //             city,
-    //             zip,
-    //             type,
-    //             total,
-    //             pizzas
-    //         } = req.body;
-    //         await client.query('BEGIN')
-    //         const orderInsertResults = await client.query(`INSERT INTO "orders" ("customer_name", "street_address", "city", "zip", "type", "total")
-    //         VALUES ($1, $2, $3, $4, $5, $6)
-    //         RETURNING id;`, [customer_name, street_address, city, zip, type, total]);
-    //         const orderId = orderInsertResults.rows[0].id;
-    
-    //         await Promise.all(pizzas.map(pizza => {
-    //             const insertLineItemText = `INSERT INTO "line_item" ("order_id", "pizza_id", "quantity") VALUES ($1, $2, $3)`;
-    //             const insertLineItemValues = [orderId, pizza.id, pizza.quantity];
-    //             return client.query(insertLineItemText, insertLineItemValues);
-    //         }));
-    
-    //         await client.query('COMMIT')
-    //         res.sendStatus(201);
-    //     } catch (error) {
-    //         await client.query('ROLLBACK')
-    //         console.log('Error POST /api/order', error);
-    //         res.sendStatus(500);
-    //     } finally {
-    //         client.release()
-    //     }
-    // });
 
     // Variable for data to send in POST
     let customerDataToSend = {
@@ -82,29 +48,30 @@ function Checkout() {
     }
 
     return (
-        <Box>
-            <Card sx={{ maxWidth: 275, bgcolor: 'primary.light' }}>
-                <CardContent>
-                <h3>Step 3: Checkout</h3>
+        <Box sx={{ p: 2 }}>
+            <Stack direction="column" justifyContent="space-between" alignItems="center" bgcolor='secondary.light'>
+                <br />
+                <Typography variant="h5">Step 3: Checkout</Typography>
                 <div className='order-summary'>
                         <div className='customer-info'>
                             <p>{customerInfo.customer_name}</p>
                             <p>{customerInfo.street_address}</p>
                             <p>{customerInfo.city} {customerInfo.zip}</p>
                         </div>
-                        <div className='order-type'>
-                            <h4>{customerInfo.type}</h4>
-                        </div>
+                        <Container>
+                            <Chip label={`${customerInfo.type}`} color='secondary' />
+                        </Container>
+                        <br />
                 </div>
-                </CardContent>
-            </Card>
+            </Stack>
+            <br />
             <div className='order-table'>
                 <TableContainer>
-                    <Table sx={{ minWidth: 350 }}>
+                    <Table sx={{ minWidth: 350 }} size="small">
                         <TableHead sx={{ bgcolor: 'secondary.light' }}>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell align="right">Cost</TableCell>
+                                <TableCell ><Typography variant="h6">Name</Typography></TableCell>
+                                <TableCell align="right"><Typography variant="h6">Cost</Typography></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -118,8 +85,8 @@ function Checkout() {
                     </Table>
                 </TableContainer> 
             </div>
-            <h2>Total: {customerInfo.total}</h2>
-            <Button variant="contained" color="secondary" onClick={() => {handleClick()}}>Checkout</Button>
+            <Typography variant="h4">Total: {customerInfo.total}</Typography>
+            <Button endIcon={<ShoppingCartCheckoutIcon />} variant="contained" color='secondary' onClick={() => {handleClick()}}>Checkout</Button>
         </Box>
     )
 }; 
