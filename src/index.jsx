@@ -16,6 +16,7 @@ root.render(
 );
 
 export {default as Admin} from './components/Admin/Admin.jsx';
+export {default as AnimatedRoutes} from './components/App/AnimatedRoutes.jsx'
 export {default as Checkout} from './components/Checkout/Checkout.jsx';
 export {default as CustomerInfo} from './components/CustomerInfo/CustomerInfo.jsx';
 export {default as Header} from './components/Header/Header.jsx';
