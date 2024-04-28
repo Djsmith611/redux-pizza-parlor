@@ -13,12 +13,11 @@ import { OrderTable } from "../../index";
 export default function Admin() {
   return (
     <motion.div
-    initial={{ width: 0 }}
-    animate={{
-      width: "100%",
-      transition: { duration: 1 },
-    }}
-    exit={{ x: window.innerWidth, width: 0, transition: { duration: 0.1 } }}>
+      initial={{ opacity: 0, translateY: 50 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Container maxWidth="lg" sx={{ mt: 4 }}>
         <Paper elevation={3} sx={{ p: 2 }}>
           <Typography variant="h4" component="h2" gutterBottom>

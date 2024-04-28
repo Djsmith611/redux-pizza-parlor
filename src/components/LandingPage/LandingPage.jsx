@@ -11,12 +11,10 @@ export default function LandingPage() {
 
   return (
     <motion.div
-      initial={{ width: 0 }}
-      animate={{
-        width: "100%",
-        transition: { duration: 1 },
-      }}
-      exit={{ x: window.innerWidth, width: 0, transition: { duration: 0.1 } }}
+      initial={{ opacity: 0, translateY: 50 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <Container sx={{ textAlign: "center", paddingTop: "50px" }}>
         <Typography variant="h2" gutterBottom>

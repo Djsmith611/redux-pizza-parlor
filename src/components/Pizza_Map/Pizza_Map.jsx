@@ -25,4 +25,4 @@ export default function Pizza_Map({ pizza }) {
       <button onClick={sendToCart}>Add to Cart</button>
     </>
   );
-};
+}
