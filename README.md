@@ -1,113 +1,121 @@
-# React Pizza Parlor
+# <center> WELCOME TO THE CHEESY PIZZERIA! </center>
+### <center> PIZZA ORDERING APP </center>
 
-Before you get started make sure to read through **ALL** requirements and outline a plan for your group. Assign out tasks and use branches to allow team members to work in parallel.
+## Description
 
-### Setup
+_Duration: 3 Week Sprint_
 
-Server side code for baseline functionality has been provided for you. Each member of your team will need to create a `pizza_parlor` database
+This is a pizza-ordering application.  Users can:
 
-**Import data**
+ * Add pizzas to their cart
+ * Enter their information (name, address, etc.)
+ * Review their order and personal information
+ * Checkout and restart the process
 
-Right now, the owner enters all of the orders in SQL, but they want any of their employees to be able to enter a new order. The owner has provided some of the server side routes and a way to create their database with (`database.sql`). Your team should build out the following views.
+ Admins can:
 
-**Start your server**
+ * View a summary of orders
+ * Click into line items on the order summary page for details (pending)
 
-```
-npm install
-npm run server
-```
+The app stores all pizzas ordered and the user's information in a Redux store until the user checks out.  At checkout, the app sends the order and user's information to a database.  The admin page pulls its summary and detailed information from the database.  
 
-Now that the server is running, open a new terminal tab with `cmd + t` and start the react client app.
+This documentation provides sample content for the database.
 
-**Start your client**
+This is a group project.  We collaborated using Jira and Slack.  Here's the breakdown of who did what: 
 
-```
-npm run client
-```
+@DeadstockFox:
+ * `/select` page and functionality
+@Djsmith611: 
+ * Initial Redux store buildout
+ * Initial Jira board buildout
+ * Landing page and framer-motion transitions
+ * `/info` page and functionality
+@Kern89:
+ * `/admin` page and functionality
+@lonsnw:
+ * Additional Redux store buildout
+ * Documentation
+ * `/checkout` page and functionality
+All:
+ * Troubleshooting
+ * Branching, merging, and version control
+ * Collaboration on styling
 
-## Base Mode ad API DOCS
+This app is not currently deployed.  This document will be updated with a link to where to find the app once it is deployed.  It was built in response to this assignment: [Assignment Instructions](./INSTRUCTIONS.md).
 
-The tasks for Base Mode are broken down further [on this Trello Board](https://trello.com/b/aWXfG8D6/redux-pizza-parlor). Take time before diving into the code to copy this board and build out the plan even further.
+## Screen Shot
 
-After starting up the server, the following routes should be available. You can test them with Postman.
+Landing page `/`:
+<br />
+<center><image src=public/images/default-loaded.png width=80%></center>
+<br />
 
-### GET PIZZA  
+Pizza selection `/select`:
+<br />
+<center><image src=public/images/task-input.png width=80%></center>
+<br />
 
-`/api/pizza`
+Customer info input `/info`:
+<br />
+<center><image src=public/images/done-list.png width=80%></center>
+<br />
 
-**Returns** an array of objects with *id*, *name*, *description*, *price*, and *image_path*. 
+Checkout screen `/checkout`:
+<br />
+<center><image src=public/images/done-list.png width=80%></center>
+<br />
 
-### POST ORDER
+Admin view `/admin`:
+<br />
+<center><image src=public/images/done-list.png width=80%></center>
+<br />
 
-`/api/order`
+## Prerequisites
 
-**Post Data** should be an object that contains user information, *customer_name*, *street_address*, *city*, *zip*, *type*, *total* and an array of pizza id's as object. 
+- [Node.js](https://nodejs.org/en/)
+- [Postgres](https://www.postgresql.org/download/)
 
-In Postman, select the Body tab, select Raw radio button, and then a blue dropdown appears and select JSON.
+## Installation
 
-**Example JSON Post Data:**
+The application has been tested and run on a local machine using the browser. It may be deployed in the future but currently is only available locally.
 
-```JSON
-{
-  "customer_name": "Donatello",
-  "street_address": "20 W 34th St",
-  "city": "New York",
-  "zip": "10001",
-  "total": "27.98",
-  "type": "Pickup",
-  "pizzas": [{
-    "id": "1",
-    "quantity": "1"
-  },{
-    "id": "2",
-    "quantity": "1"
-  }]
-}
-```
+1. Clone down a version of this repository
+2. Create a database named `weekend-to-do-app`
+3. Create and populate a table called `tasks` and a table called `finished`  
+    - This project is built on [Postgres](https://www.postgresql.org/download/), which you will need to install to use the app
+    - The `database.sql` file contained in this repository provides all of the necessary queries for creating the tables needed to run the app
+    - The queries will also populate the `tasks` table with sample data
+    - The `finished` table will be populated when the app is used, so no sample data is needed or provided
+4. Open in your editor of choice and run an `npm install`
+5. Run `npm run server` in your terminal
+6. Run `npm run client` in your terminal
+7. Navigate to the localhost port provided by your terminal when you initiate your client.  The default port when running Vite, for example, is `http://localhost:5173/`
 
-### GET ORDERS
+## Usage
+I'm a developer creating an app.  I'd like to make a to do list that tracks all of my tasks for building out features.  
 
-`/api/order`
+I want to be able to check tasks off when I complete them and have that completion status stored.  Sometimes I discover a bug after I've checked off a task, so I need to be able to uncheck the task so that my list of tasks accurately shows the features that are still in progress and the steps I plan to take to build (and debug) them.
 
-**Returns** an array of orders.
+I also want to be able to add tasks to the list, in case I forgot to populate them into the database at the start.  I like being able to see what I've accomplished, so I want an archive feature that shows me everything I've marked fully complete.  And, if I need to, I can delete tasks that I added in error or that are for a function I'm no longer planning to build.
 
+1. Follow the installation instructions above
+2. Enter each task into the input field at the top of the page
+3. Select `Add to list` to add the new task to the end of the to do list
+4. When each task is completed, check it off using the checkbox in that task's row
+5. If part of the feature needs debugging, uncheck the task using the checkbox
+6. If a task is complete and doesn't need debugging, select the `Archive` button in that task's row
+7. Track everything that's been accomplished in the archive list
+8. If a task needs to be fully deleted, add it to the archive by selecting `Archive` in the task's row and then select `Delete` from its row once it's been moved to the archive
 
-## BASE REQUIREMENTS
+## Technologies
 
-Your client has asked your team to build a pizza ordering system.
+- PostgreSQL
+- Express
+- React
+- Node
 
-### ORDER - SELECT PIZZA
+## Documentation
+This documentation was built following a [provided template](https://github.com/PrimeAcademy/readme-template/blob/main/README.md).   It has been edited for style,  consistency, and to provide all relevant details.
 
-When visiting [http://localhost:5173/](http://localhost:5173/) display all of the pizzas on the screen. Allow users to add or remove each pizza they would like to order. **For base mode, only allow the user to have one of each pizza in their cart.** Show the total cost of items in the cart in the top right of this page. 
-
-This page should have a next button that brings the user to the **enter order details page**.
-
-![Select Pizza View](wireframes/screen-one.png)
-
-### ORDER - ENTER CUSTOMER INFORMATION
-
-Collect user information, *name*, *street address*, *city* and *zip*. This page should have an option to select pickup vs. delivery. The total cost of the order should appear in the top right of this page. This page should have a next button that brings the user to the **checkout** page.
-
-![Select Pizza View](wireframes/screen-two.png)
-
-### ORDER - CHECKOUT
-
-Users should not be able to modify item totals on this screen. When they click checkout, the user information, order total and array of pizzas should be sent to the server. After the checkout is complete, navigate the user back to the **select pizza** page AND clear out the reducers as appropriate. Each order should begin with "clean" order data (cart, address, etc).
-
-![Select Pizza View](wireframes/screen-three.png)
-
-### ADMIN - ORDERS
-
-This page **should not** appear in the navigation bar. Eventually the client would like to add authentication but for now, it will be available to anyone with the url [http://localhost:5173/admin](http://localhost:5173/admin). This page will display the name, time and order total for each of the orders placed.
-
-![Select Pizza View](wireframes/screen-admin.png)
-
-
-## STRETCH GOALS
-
-- Improve the styling of the app using Material-UI cards, buttons, nav bar and icons.
-- Allow the user to go back to previous pages (until they've completed checkout).
-- Display a list of pizzas for each order on the orders page.
-- Add pictures to the `public/images` folder and update the image url for each pizza in the database.
-- Add a button on the orders page to track delivery status.
-- Allow admins to click on an order and see all of the details for that order (which pizzas were a part of that particular order). For the details of the order with `id` of `1`, it will be available to anyone with the url [http://localhost:5173/order/1](http://localhost:5173/order/1). This route is not built on the server, so you will need to create it.
+## Support
+If you have suggestions or issues, please contact me.

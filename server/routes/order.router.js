@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 // GET all orders that have been placed, populate with data from the pizza collection
 router.get('/', (req, res) => {
     // Find all orders and return them
-    pool.query('SELECT * FROM "orders";').then((result) => {
+    pool.query('SELECT * FROM "orders" ORDER BY "time";').then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error GET /api/order', error);
