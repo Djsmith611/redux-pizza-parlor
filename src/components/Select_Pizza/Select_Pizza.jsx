@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Pizza_Map } from "../../index";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { Button, Grid, Container  } from "@mui/material";
 
 export default function Select_Pizza() {
   const navigate = useNavigate();
@@ -39,27 +40,22 @@ export default function Select_Pizza() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <table>
-        <tbody>
-          <tr>
-            {pizzaList.map((pizza) => {
-              return (
-                <td key={pizza.name}>
-                  <Pizza_Map pizza={pizza} />
-                </td>
-              );
-            })}
-          </tr>
-        </tbody>
-      </table>
-      <button
-        onClick={() => {
-          handleClick();
-        }}
+      <Container maxWidth="lg">
+      <Grid container spacing={2} sx={{margin:"10px"}}>
+        {pizzaList.map((pizza) => (
+          <Grid item xs={12} sm={6} md={4} key={pizza.id}>
+            <Pizza_Map pizza={pizza} />
+          </Grid>
+        ))}
+      </Grid>
+      <Button
+        variant="contained"
+        onClick={handleClick}
+        sx={{ mt: 2 }}
       >
-        {" "}
-        Next{" "}
-      </button>
+        Next
+      </Button>
+      </Container>
     </motion.div>
   );
-}
+};
