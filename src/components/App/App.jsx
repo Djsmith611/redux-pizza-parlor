@@ -1,17 +1,11 @@
-import {
-  Admin,
-  Checkout,
-  CustomerInfo,
-  Header,
-  LandingPage,
-  Select_Pizza,
-} from "../../index.jsx";
 import "./App.css";
-import { 
-  BrowserRouter as Router, 
-  Route, 
-  Routes } from "react-router-dom";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import { AnimatedRoutes, Header } from "../../index.jsx";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function App() {
   const theme = createTheme({
@@ -31,15 +25,9 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Header />
-          <Routes>
-            <Route exact path="/" element={<LandingPage />} />
-            <Route path="/select" element={<Select_Pizza />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/info" element={<CustomerInfo />} />
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
+          <AnimatedRoutes />
         </Router>
       </ThemeProvider>
     </div>
   );
-};
+}
