@@ -99,6 +99,10 @@ The application has been tested and run on a local machine using the browser. It
 4. Open in your editor of choice and run the following commands to install the necessary packages:
 
     * `npm install`
+    * `npm install redux react-redux @reduxjs/toolkit redux-logger`
+    * `npm install react-router-dom`
+    * `npm install framer-motion`
+    * `npm install @fontsource/roboto`
     * `npm install framer-motion`
     * `npm install moment --save`
     * `npm install @mui/material @emotion/react @emotion/styled`
