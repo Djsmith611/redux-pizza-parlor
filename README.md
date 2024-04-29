@@ -5,11 +5,11 @@
 
 _Duration: 3 Week Sprint_
 
-This is a pizza-ordering application.  Users can:
+This is a pizza-ordering application intended to be used by an employee when taking a customer's order.  Users can:
 
- * Add pizzas to their cart
- * Enter their information (name, address, etc.)
- * Review their order and personal information
+ * Add pizzas to the cart
+ * Enter the customer's information (name, address, etc.)
+ * Review the order and customer's information
  * Checkout and restart the process
 
  Admins can:
@@ -17,57 +17,67 @@ This is a pizza-ordering application.  Users can:
  * View a summary of orders
  * Click into line items on the order summary page for details (pending)
 
-The app stores all pizzas ordered and the user's information in a Redux store until the user checks out.  At checkout, the app sends the order and user's information to a database.  The admin page pulls its summary and detailed information from the database.  
+The app stores all pizzas ordered and the customer's information in a Redux store until the user checks out.  At checkout, the app sends the order and customer's information to a database.  The admin page pulls its summary and detailed information from the database.  
 
 This documentation provides sample content for the database.
 
+## Build
+
 This is a group project.  We collaborated using Jira and Slack.  Here's the breakdown of who did what: 
 
-@DeadstockFox:
+[@DeadstockFox:](https://github.com/DeadstockFox)
  * `/select` page and functionality
-@Djsmith611: 
+
+[@Djsmith611:](https://github.com/Djsmith611)
  * Initial Redux store buildout
  * Initial Jira board buildout
  * Landing page and framer-motion transitions
  * `/info` page and functionality
-@Kern89:
+
+[@Kern89:](https://github.com/Kern89)
  * `/admin` page and functionality
-@lonsnw:
+
+[@lonsnw:](https://github.com/lonsnw)
  * Additional Redux store buildout
+ * Additional Jira organization/ticket-making
  * Documentation
  * `/checkout` page and functionality
+
 All:
+ * Planning/strategy
  * Troubleshooting
  * Branching, merging, and version control
  * Collaboration on styling
 
+Server side GET and POST request code was provided, as were [wireframes](./wireframes/).
+
 This app is not currently deployed.  This document will be updated with a link to where to find the app once it is deployed.  It was built in response to this assignment: [Assignment Instructions](./INSTRUCTIONS.md).
 
-## Screen Shot
+## Screen Shots
 
 Landing page `/`:
 <br />
-<center><image src=public/images/default-loaded.png width=80%></center>
+<center><image src=public/images/landing.png width=80%></center>
 <br />
 
 Pizza selection `/select`:
 <br />
-<center><image src=public/images/task-input.png width=80%></center>
+<center><image src=public/images/order-page.png width=80%></center>
 <br />
 
 Customer info input `/info`:
 <br />
-<center><image src=public/images/done-list.png width=80%></center>
+<center><image src=public/images/info-basic.png width=80%></center>
 <br />
 
 Checkout screen `/checkout`:
 <br />
-<center><image src=public/images/done-list.png width=80%></center>
+<center><image src=public/images/checkout-basic.png width=80%></center>
 <br />
 
 Admin view `/admin`:
 <br />
-<center><image src=public/images/done-list.png width=80%></center>
+<center><image src=public/images/admin-basic.png width=80%></center>
 <br />
 
 ## Prerequisites
@@ -80,32 +90,43 @@ Admin view `/admin`:
 The application has been tested and run on a local machine using the browser. It may be deployed in the future but currently is only available locally.
 
 1. Clone down a version of this repository
-2. Create a database named `weekend-to-do-app`
-3. Create and populate a table called `tasks` and a table called `finished`  
+2. Create a database named `pizza_parlor`
+3. Create and populate three tables: `line_item`, `orders`, and `pizza`.  
     - This project is built on [Postgres](https://www.postgresql.org/download/), which you will need to install to use the app
     - The `database.sql` file contained in this repository provides all of the necessary queries for creating the tables needed to run the app
-    - The queries will also populate the `tasks` table with sample data
-    - The `finished` table will be populated when the app is used, so no sample data is needed or provided
-4. Open in your editor of choice and run an `npm install`
+    - The queries will also populate the `pizza` table with sample data
+    - The `line_item` and `orders` tables will be populated when the app is used, so no sample data is needed or provided
+4. Open in your editor of choice and run the following commands to install the necessary packages:
+
+    * `npm install`
+    * `npm install framer-motion`
+    * `npm install moment --save`
+    * `npm install @mui/material @emotion/react @emotion/styled`
+    * `npm install @mui/icons-material`
+
 5. Run `npm run server` in your terminal
 6. Run `npm run client` in your terminal
 7. Navigate to the localhost port provided by your terminal when you initiate your client.  The default port when running Vite, for example, is `http://localhost:5173/`
 
 ## Usage
-I'm a developer creating an app.  I'd like to make a to do list that tracks all of my tasks for building out features.  
+I work at the Cheesy Pizzeria taking orders over the phone and making dough.  My coworkers on the line and I are far more interested in making amazing pizzas than managing the orders database, so our boss hired some developers to make an app that'll keep me kneading while also tracking orders and information for the managerial folks.  
 
-I want to be able to check tasks off when I complete them and have that completion status stored.  Sometimes I discover a bug after I've checked off a task, so I need to be able to uncheck the task so that my list of tasks accurately shows the features that are still in progress and the steps I plan to take to build (and debug) them.
+The kitchen staff only needs to know the orders and whether they'll be picked up or delivered.  Our boss wants to track orders and customers over the course of the day or longer, so they're interested in building a database with information about who ordered what and when.  From there, they can track customer loyalty and see which areas of the metro they might want to target with their advertising campaigns.
 
-I also want to be able to add tasks to the list, in case I forgot to populate them into the database at the start.  I like being able to see what I've accomplished, so I want an archive feature that shows me everything I've marked fully complete.  And, if I need to, I can delete tasks that I added in error or that are for a function I'm no longer planning to build.
+In anticipation of adding ordering kiosks in our building or even allowing customers to order online, our boss also requested a landing page for the app that digitally welcomes our customers to The Cheesy Pizzeria.  The boss has an eye towards efficiency and maybe even expansion.
+
+Here's what we did to set this app up for taking orders starting at lunch today:
 
 1. Follow the installation instructions above
-2. Enter each task into the input field at the top of the page
-3. Select `Add to list` to add the new task to the end of the to do list
-4. When each task is completed, check it off using the checkbox in that task's row
-5. If part of the feature needs debugging, uncheck the task using the checkbox
-6. If a task is complete and doesn't need debugging, select the `Archive` button in that task's row
-7. Track everything that's been accomplished in the archive list
-8. If a task needs to be fully deleted, add it to the archive by selecting `Archive` in the task's row and then select `Delete` from its row once it's been moved to the archive
+2. Select `Start your order` to begin the order
+3. Select `Add to Cart` from under each pizza that the customer wants
+4. Select `Next` to move to the next page and input the customer's information
+5. Enter the customer's information into the fields, select whether the pizzas will be picked up or delivered, and then select `Next`
+6. Review the information with the customer to ensure that the order has been taken correctly
+7. After the customer has confirmed their order and information, select `Checkout`
+8. The kitchen POS will return to the landing page, ready for the next order
+9. In the office, managers can monitor the day's sales by calling up the admin page at `/admin`
+10. _PENDING_ Managers can call up details for individual orders by clicking on line items
 
 ## Technologies
 
@@ -113,9 +134,12 @@ I also want to be able to add tasks to the list, in case I forgot to populate th
 - Express
 - React
 - Node
+- MUI
+- Moment
+- Framer-Motion
 
 ## Documentation
 This documentation was built following a [provided template](https://github.com/PrimeAcademy/readme-template/blob/main/README.md).   It has been edited for style,  consistency, and to provide all relevant details.
 
 ## Support
-If you have suggestions or issues, please contact me.
+If you have suggestions or issues, please contact a member of the project team.
