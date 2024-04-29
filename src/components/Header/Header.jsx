@@ -1,5 +1,6 @@
 import { AppBar, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import LocalPizzaOutlinedIcon from '@mui/icons-material/LocalPizzaOutlined';
 
 export default function Header() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Header() {
       }}
     >
       <Typography variant="h4" component="h1" sx={{ padding: 1 }}>
-        Prime Pizza
+        <LocalPizzaOutlinedIcon />The<LocalPizzaOutlinedIcon />Cheesy<LocalPizzaOutlinedIcon />Pizzeria<LocalPizzaOutlinedIcon />
       </Typography>
     </AppBar>
   );
