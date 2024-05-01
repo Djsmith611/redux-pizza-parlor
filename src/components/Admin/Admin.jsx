@@ -10,6 +10,7 @@ import {
 import { motion } from "framer-motion";
 import { OrderTable } from "../../index";
 
+
 export default function Admin() {
   return (
     <motion.div
@@ -30,6 +31,7 @@ export default function Admin() {
                 <TableCell>Time</TableCell>
                 <TableCell>Type</TableCell>
                 <TableCell>Total</TableCell>
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <OrderTable />
