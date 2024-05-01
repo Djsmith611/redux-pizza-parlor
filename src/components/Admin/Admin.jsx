@@ -10,7 +10,6 @@ import {
 import { motion } from "framer-motion";
 import { OrderTable } from "../../index";
 
-
 export default function Admin() {
   return (
     <motion.div
