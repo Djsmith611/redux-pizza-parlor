@@ -15,7 +15,7 @@ This is a pizza-ordering application intended to be used by an employee when tak
  Admins can:
 
  * View a summary of orders
- * Click into line items on the order summary page for details (pending)
+ * Click into line items on the order summary page for details
 
 The app stores all pizzas ordered and the customer's information in a Redux store until the user checks out.  At checkout, the app sends the order and customer's information to a database.  The admin page pulls its summary and detailed information from the database.  
 
@@ -33,6 +33,7 @@ This is a group project.  We collaborated using Jira and Slack.  Here's the brea
  * Initial Jira board buildout
  * Landing page and framer-motion transitions
  * `/info` page and functionality
+ * `/admin` details functionality
 
 [@Kern89:](https://github.com/Kern89)
  * `/admin` page and functionality
@@ -78,6 +79,11 @@ Checkout screen `/checkout`:
 Admin view `/admin`:
 <br />
 <center><image src=public/images/admin-basic.png width=80%></center>
+<br />
+
+Admin view with details:
+<br />
+<center><image src=public/images/admin-detailed.png width=80%></center>
 <br />
 
 ## Prerequisites
@@ -130,7 +136,7 @@ Here's what we did to set this app up for taking orders starting at lunch today:
 7. After the customer has confirmed their order and information, select `Checkout`
 8. The kitchen POS will return to the landing page, ready for the next order
 9. In the office, managers can monitor the day's sales by calling up the admin page at `/admin`
-10. _PENDING_ Managers can call up details for individual orders by clicking on line items
+10. Managers can call up details for individual orders by clicking on the `DETAILS` button in each line item
 
 ## Technologies
 
