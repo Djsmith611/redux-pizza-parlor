@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import {
   Button,
   Card,
@@ -8,6 +7,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 export default function Pizza_Map({ pizza }) {
   const dispatch = useDispatch();
@@ -50,4 +50,4 @@ export default function Pizza_Map({ pizza }) {
       </CardActions>
     </Card>
   );
-};
+}

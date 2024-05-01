@@ -30,6 +30,7 @@ export default function Admin() {
                 <TableCell>Time</TableCell>
                 <TableCell>Type</TableCell>
                 <TableCell>Total</TableCell>
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <OrderTable />
