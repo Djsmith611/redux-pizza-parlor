@@ -102,18 +102,7 @@ The application has been tested and run on a local machine using the browser. It
     - The `database.sql` file contained in this repository provides all of the necessary queries for creating the tables needed to run the app
     - The queries will also populate the `pizza` table with sample data
     - The `line_item` and `orders` tables will be populated when the app is used, so no sample data is needed or provided
-4. Open in your editor of choice and run the following commands to install the necessary packages:
-
-    * `npm install`
-    * `npm install redux react-redux @reduxjs/toolkit redux-logger`
-    * `npm install react-router-dom`
-    * `npm install framer-motion`
-    * `npm install @fontsource/roboto`
-    * `npm install framer-motion`
-    * `npm install moment --save`
-    * `npm install @mui/material @emotion/react @emotion/styled`
-    * `npm install @mui/icons-material`
-
+4. Open in your editor of choice and run `npm install` in the terminal.
 5. Run `npm run server` in your terminal
 6. Run `npm run client` in your terminal
 7. Navigate to the localhost port provided by your terminal when you initiate your client.  The default port when running Vite, for example, is `http://localhost:5173/`
